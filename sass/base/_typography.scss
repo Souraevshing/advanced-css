@@ -1,0 +1,26 @@
+.heading-primary {
+  color: #ffffff;
+  text-transform: uppercase;
+  /* to prevent the text to go up after animation is over */
+  backface-visibility: hidden;
+  margin: 5rem;
+
+  &--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveLeft;
+    animation-duration: 2s;
+    animation-delay: 0.5s;
+    animation-timing-function: ease-in-out;
+  }
+
+  &--sub {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveRight 1s ease-in-out;
+  }
+}

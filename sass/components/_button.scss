@@ -1,0 +1,54 @@
+.btn {
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #777;
+    padding: 1rem 2rem;
+    /* to give height width to any element use inline-block */
+    display: inline-block;
+    border-radius: 999rem;
+    transition: all 0.5s;
+    position: relative;
+    animation-name: moveButtonBottom;
+    animation-duration: 3s;
+    animation-delay: 2.5s;
+    font-size: 1.6rem;
+  }
+
+  &:hover {
+    transform: translateY(-0.2rem);
+    box-shadow: 0 0.2rem 0.1rem rgb($color-black, 0.2);
+
+    &::after {
+      transform: scaleX(1.5) scaleY(1.5);
+      opacity: 0;
+    }
+  }
+
+  &:active {
+    transform: translateY(-0.1rem);
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: #777;
+
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  &::after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 999rem;
+    z-index: -1;
+    transition: all 0.5s;
+  }
+}

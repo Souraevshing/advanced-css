@@ -1,3 +1,4 @@
+/* /* declaring variables so that we can import and use it in main.scss file */
 /* resettig the universal style for the whole page */
 *,
 *::after,
@@ -24,61 +25,6 @@ body {
   padding: 3rem;
   box-sizing: border-box;
   /* we are using box-sizing: inherit; property here  */
-}
-
-.header {
-  height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(106, 164, 96, 0.3), rgba(94, 185, 33, 0.8)), url(../img/hero.jpg);
-  background-size: cover;
-  background-position: top;
-  /* cropping the image using polygon function to set the desired size */
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  position: relative;
-}
-
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.header__logo-box {
-  position: absolute;
-  top: 4rem;
-  left: 4rem;
-}
-
-.header__logo {
-  height: 3.5rem;
-}
-
-.heading-primary {
-  color: #ffffff;
-  text-transform: uppercase;
-  /* to prevent the text to go up after animation is over */
-  backface-visibility: hidden;
-  margin: 5rem;
-}
-
-.heading-primary--main {
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
-  animation-name: moveLeft;
-  animation-duration: 2s;
-  animation-delay: 0.5s;
-  animation-timing-function: ease-in-out;
-}
-
-.heading-primary--sub {
-  display: block;
-  font-size: 1.8rem;
-  font-weight: 700;
-  letter-spacing: 1.75rem;
-  animation: moveRight 1s ease-in-out;
 }
 
 /* adding animations using keyframes */
@@ -118,8 +64,33 @@ body {
     transform: translate(0);
   }
 }
-.btn:link,
-btn:visited {
+.heading-primary {
+  color: #ffffff;
+  text-transform: uppercase;
+  /* to prevent the text to go up after animation is over */
+  backface-visibility: hidden;
+  margin: 5rem;
+}
+.heading-primary--main {
+  display: block;
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+  animation-name: moveLeft;
+  animation-duration: 2s;
+  animation-delay: 0.5s;
+  animation-timing-function: ease-in-out;
+}
+.heading-primary--sub {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1.75rem;
+  animation: moveRight 1s ease-in-out;
+}
+
+/* declaring variables so that we can import and use it in main.scss file */
+.btn:link, .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
   color: #777;
@@ -134,21 +105,24 @@ btn:visited {
   animation-delay: 2.5s;
   font-size: 1.6rem;
 }
-
 .btn:hover {
   transform: translateY(-0.2rem);
-  box-shadow: 0 0.2rem 0.1rem rgb(42, 42, 42);
+  box-shadow: 0 0.2rem 0.1rem rgba(0, 0, 0, 0.2);
 }
-
+.btn:hover::after {
+  transform: scaleX(1.5) scaleY(1.5);
+  opacity: 0;
+}
 .btn:active {
   transform: translateY(-0.1rem);
 }
-
 .btn--white {
-  background-color: #ffffff;
+  background-color: #fff;
   color: #777;
 }
-
+.btn--white::after {
+  background-color: #fff;
+}
 .btn::after {
   content: "";
   display: inline-block;
@@ -162,13 +136,60 @@ btn:visited {
   transition: all 0.5s;
 }
 
-.btn--white::after {
-  background-color: #ffffff;
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.3), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  /* cropping the image using polygon function to set the desired size */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  position: relative;
+  /* since all the classes in inside header class, so we can nest all the classes inside same class using '&' sign */
+}
+.header__logo-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+.header__text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.header__logo {
+  height: 3.5rem;
 }
 
-.btn:hover::after {
-  transform: scaleX(1.5) scaleY(1.5);
-  opacity: 0;
+.row {
+  max-width: 114rem;
+  background-color: #eee;
+  margin: 0 auto;
+  /* by importing clearfix from mixin inside here, then the resulting code will be:-
+
+  .row::after{
+      content: '';
+      display: table;
+      clear: both;
+      }
+  */
+}
+.row:not(:last-child) {
+  margin-bottom: 8rem;
+}
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.row .col-1-of-2 {
+  width: calc((100% - 8rem) / 2);
+  background-color: red;
+  float: left;
+}
+.row .col-1-of-2:not(:last-child) {
+  margin-right: 8rem;
 }
 
 /*# sourceMappingURL=style.css.map */

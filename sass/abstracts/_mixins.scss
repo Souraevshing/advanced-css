@@ -1,0 +1,9 @@
+//mixin are simple block of code which when imported in any scss file, will just replace the css code with the mixin css code
+
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: table; //standard way of using clearfix
+    clear: both; //clearing both left and right
+  }
+}

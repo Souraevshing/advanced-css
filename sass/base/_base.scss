@@ -1,0 +1,29 @@
+/* /* declaring variables so that we can import and use it in main.scss file */
+
+/* resettig the universal style for the whole page */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  /* setting box-sizing to inherit enables us to use box-sizing in each element */
+}
+
+/* setting font-size of whole page to 12px since rem is dependent upon the root font-size, so that anywhere we     want  to change the font-size, then we just change the font-size to rem. i.e. 1px=10rem
+*/
+html {
+  font-size: 62.5%;
+  /* changing font-size from px to percent i.e root-font-size is 16px, we are setting font-size to 10px and dividing 10/16=0.625%. this is done so that any user can change the font-size by zooming in  */
+}
+
+body {
+  font-family: 'lato', sans-serif;
+  font-weight: 400;
+  /*font-size: 16px;*/
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  box-sizing: border-box;
+  /* we are using box-sizing: inherit; property here  */
+}
