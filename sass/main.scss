@@ -1,0 +1,189 @@
+$color-primary: #7ed56f;
+$color-primary-light: rgba(106, 164, 96, 0.3);
+$color-primary-dark: rgba(94, 185, 33, 0.8);
+
+/* resettig the universal style for the whole page */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  /* setting box-sizing to inherit enables us to use box-sizing in each element */
+}
+
+/* setting font-size of whole page to 12px since rem is dependent upon the root font-size, so that anywhere we     want  to change the font-size, then we just change the font-size to rem. i.e. 1px=10rem
+*/
+html {
+  font-size: 62.5%;
+  /* changing font-size from px to percent i.e root-font-size is 16px, we are setting font-size to 10px and dividing 10/16=0.625%. this is done so that any user can change the font-size by zooming in  */
+}
+
+body {
+  font-family: 'lato', sans-serif;
+  font-weight: 400;
+  /*font-size: 16px;*/
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  box-sizing: border-box;
+  /* we are using box-sizing: inherit; property here  */
+}
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(
+      to right bottom,
+      $color-primary-light,
+      $color-primary-dark
+    ),
+    url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  /* cropping the image using polygon function to set the desired size */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  position: relative;
+}
+
+.header__text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.header__logo-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+
+.header__logo {
+  height: 3.5rem;
+}
+
+.heading-primary {
+  color: #ffffff;
+  text-transform: uppercase;
+  /* to prevent the text to go up after animation is over */
+  backface-visibility: hidden;
+  margin: 5rem;
+}
+
+.heading-primary--main {
+  display: block;
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+  animation-name: moveLeft;
+  animation-duration: 2s;
+  animation-delay: 0.5s;
+  animation-timing-function: ease-in-out;
+}
+
+.heading-primary--sub {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1.75rem;
+  animation: moveRight 1s ease-in-out;
+}
+
+/* adding animations using keyframes */
+@keyframes moveLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+
+  80% {
+    transform: translateX(1.5rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  80% {
+    transform: translateX(1.5rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveButtonBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+.btn:link,
+btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #777;
+  padding: 1rem 2rem;
+  /* to give height width to any element use inline-block */
+  display: inline-block;
+  border-radius: 999rem;
+  transition: all 0.5s;
+  position: relative;
+  animation-name: moveButtonBottom;
+  animation-duration: 3s;
+  animation-delay: 2.5s;
+  font-size: 1.6rem;
+}
+
+.btn:hover {
+  transform: translateY(-0.2rem);
+  box-shadow: 0 0.2rem 0.1rem rgb(42, 42, 42);
+}
+
+.btn:active {
+  transform: translateY(-0.1rem);
+}
+
+.btn--white {
+  background-color: #ffffff;
+  color: #777;
+}
+
+.btn::after {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 999rem;
+  z-index: -1;
+  transition: all 0.5s;
+}
+
+.btn--white::after {
+  background-color: #ffffff;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.5) scaleY(1.5);
+  opacity: 0;
+}
