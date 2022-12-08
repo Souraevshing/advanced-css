@@ -1,6 +1,5 @@
 .row {
   max-width: $grid-width;
-  background-color: #eee;
   margin: 0 auto;
 
   &:not(:last-child) {
@@ -19,7 +18,6 @@
   //attribute selector
   //it is used to select specific attribute in html file. here ^= searches for all elements starting with col-1
   [class^='col-'] {
-    background-color: red;
     float: left;
 
     &:not(:last-child) {
